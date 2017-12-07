@@ -2,7 +2,7 @@ $(document).ready(function() {
     var colorCode = randomColor();
     changeText(colorCode);
     changeBackgroundColor(colorCode);
-
+    textColorForBackground(colorCode);
 
     function randomColor() {
         var letters = '0123456789ABCDEF';
@@ -14,11 +14,26 @@ $(document).ready(function() {
     }
 
     function changeBackgroundColor(color) {
-        $(".wrapper").css("background-color", color);
+        $('.wrapper').css("background-color", color);
     }
 
     function changeText(color) {
-        $('#color').text(colorCode);
+        var colorText = $('#color');
+        var wrapper = $('.wrapper');
+        var textColor = textColorForBackground(color);
+        colorText.text(color);
+        wrapper.css("color", textColor);
+    }
+
+    function textColorForBackground(bgColor) {
+        var r = parseInt(bgColor.substr(1, 2), 16);
+        var g = parseInt(bgColor.substr(3, 2), 16);
+        var b = parseInt(bgColor.substr(5, 2), 16);
+        var textColor = ((r*299)+(g*587)+(b*114))/1000;
+        if (textColor >= 128)
+            return "#222222";
+        else
+            return "#FFFFFF";
     }
 });
 
