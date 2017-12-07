@@ -1,8 +1,18 @@
 $(document).ready(function() {
-    var colorCode = randomColor();
-    changeText(colorCode);
-    changeBackgroundColor(colorCode);
-    textColorForBackground(colorCode);
+    initColor();
+    $(window).keypress(function (e) {
+        if (e.keyCode === 0 || e.keyCode === 32) {
+            e.preventDefault()
+            initColor();
+        }
+    });
+
+    function initColor() {
+        var colorCode = randomColor();
+        changeText(colorCode);
+        changeBackgroundColor(colorCode);
+        textColorForBackground(colorCode);
+    }
 
     function randomColor() {
         var letters = '0123456789ABCDEF';
