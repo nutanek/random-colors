@@ -12,7 +12,12 @@ body {
 }
 .wrapper > .color-text {
     font-size: 30pt;
+    font-weight: bold;
     position: absolute;
     top: 42%;
-    left: 45%;
+    left: 44%;
+}
+.wrapper > .using {
+    position: absolute;
+    left: 41%;
 }
